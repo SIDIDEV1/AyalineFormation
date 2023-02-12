@@ -1,5 +1,10 @@
 const app = Vue.createApp({
-    template: `<h2>count is </h2>`
+    data() {
+        return {
+            name: 'Ayaline',
+            year: 2023
+        }
+    }
 })
 
 app.mount('#app')
