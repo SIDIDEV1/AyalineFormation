@@ -10,6 +10,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="p-5">
+    <style>
+      .box {
+        background: #b48888;
+        width: 400px;
+        padding: 100px 0;
+        margin: 20px;
+        display: inline-block;
+        text-align: center;
+      }
+    </style>
     <h1 class="text-center text-7xl font-bold underline mb-20">Formation</h1>
     <div id="app">
       <div v-if="showContent">
@@ -30,6 +40,7 @@
           Cliquez ici pour changer le nom
         </div>
       </div>
+      <div v-show="!showContent">Vous avez cahez le contenu</div>
 
       <button
         @click="toggleShowContent"
@@ -38,9 +49,42 @@
         <span v-if="!showContent">Afficher</span>
         <span v-else>Cacher</span>
       </button>
-
-      <div v-show="!showContent">Vous avez cahez le contenu</div>
+      <div class="box" @mouseover="handleEvent">Mouseouver</div>
+      <div class="box" @mouseleave="handleEvent">Mouseleave</div>
+      <div class="box" @dblclick="handleEvent">double click</div>
+      <div class="box" @mousemove="handleMousemouve">
+        Mouse mouve {{ x }} - {{ y }}
+      </div>
     </div>
-    <script src="app.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            name: "Ayaline",
+            year: 2023,
+            showContent: false,
+            x: 0,
+            y: 0,
+          };
+        },
+        methods: {
+          changeName(text) {
+            this.name = text;
+          },
+          toggleShowContent() {
+            this.showContent = !this.showContent;
+          },
+          handleEvent(e) {
+            console.log(e);
+          },
+          handleMousemouve(e) {
+            this.x = e.offsetX;
+            this.y = e.offsetY;
+          },
+        },
+      });
+
+      app.mount("#app");
+    </script>
   </body>
 </html>
