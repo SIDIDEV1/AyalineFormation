@@ -4,6 +4,11 @@ const app = Vue.createApp({
             name: 'Ayaline',
             year: 2023
         }
+    },
+    methods: {
+        changeName(text) {
+            this.name = text
+        }
     }
 })
 
