@@ -12,12 +12,34 @@
   <body class="p-5">
     <h1 class="text-center text-7xl font-bold underline mb-20">Formation</h1>
     <div id="app">
-      <h1>{{ name }} - {{ year }}</h1>
-      <button class="bg-blue-800 text-white p-2 rounded-xl mt-10" @click="year++">Incrementer</button>
-      <button class="bg-blue-800 text-white p-2 rounded-xl ml-6" @click="year--">Deincrementer</button>
-      <div class="cursor-pointer mt-10" @click="changeName('okkk')">
-        Cliquez ici pour changer le nom
+      <div v-if="showContent">
+        <h1>{{ name }} - {{ year }}</h1>
+        <button
+          class="bg-blue-800 text-white p-2 rounded-xl mt-10"
+          @click="year++"
+        >
+          Incrementer
+        </button>
+        <button
+          class="bg-blue-800 text-white p-2 rounded-xl ml-6"
+          @click="year--"
+        >
+          Deincrementer
+        </button>
+        <div class="cursor-pointer mt-10" @click="changeName('okkk')">
+          Cliquez ici pour changer le nom
+        </div>
       </div>
+
+      <button
+        @click="toggleShowContent"
+        class="bg-red-200 py-2 px-4 rounded-md hover:bg-red-500 my-10"
+      >
+        <span v-if="!showContent">Afficher</span>
+        <span v-else>Cacher</span>
+      </button>
+
+      <div v-show="!showContent">Vous avez cahez le contenu</div>
     </div>
     <script src="app.js"></script>
   </body>
