@@ -1,12 +1,20 @@
+import { useState } from "react";
+
 export default function QuestionForm() {
-    const handleSubmit = (e)=> {
+    const [text, setText] = useState('Ma default value est ça')
+    const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(e.target['input'].value);
+
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <input className="" name="input" type='datetime-local' placeholder="tapez ici ..." />
-            <button>Submit</button>
-        </form>
+        // <form onSubmit={handleSubmit} >
+        <div>
+
+            <textarea onChange={(e) => setText(e.target.value)} value={text}>
+
+            </textarea>
+            <button onClick={() => alert(text)}>Submit</button>
+        </div>
+        // </form>
     )
 }
