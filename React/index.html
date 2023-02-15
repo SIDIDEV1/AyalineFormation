@@ -20,32 +20,34 @@
     ></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-      function Header() {
+      function Banner() {
+        const title = "ayaline";
         return (
           <div>
-            <h1>Header</h1>
-            <p>{1 < 2 ? 'Tu m\'affiche ça soon' : '' }</p>
+            <h1>{title.toUpperCase()}</h1>
           </div>
         );
       }
-      function Description() {
-        const text = "Ç'a c'est mon header ...";
-        return <div>{text}</div>;
-      }
-
-      function Banner() {
+      function Cart() {
+        let monstera = 8;
+        let lierre = 10;
+        let bouquetFleur = 15;
         return (
           <div>
-            <Header />
-            <Description />
+            <ul>
+              <li>Monstera {monstera}€</li>
+              <li>Lierre {lierre}€</li>
+              <li>Bouquet de fleure {bouquetFleur}€</li>
+            </ul>
+            <h3>Le Total : {monstera + lierre + bouquetFleur}€</h3>
           </div>
         );
       }
 
       ReactDOM.render(
         <React.Fragment>
-          <Header />
-          <Description />
+          <Banner />
+          <Cart />
         </React.Fragment>,
         document.getElementById("root")
       );
